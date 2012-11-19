@@ -1,0 +1,12 @@
+table.formComment{}
+	table.formComment tr td{padding:5px;border:1px solid #ccc;color:#000}
+	table.formComment tr td.label{background-color:#ccc;font-weight:bold;text-align:right;}
+	table.formComment tr td.transparent{background-color:transparent;border:0px none;}
+	table.formComment tr td input,
+	table.formComment tr td textarea{background-color:#fff;border:2px solid #000;}
+
+table.pageComments{border-collapse:expand;border-spacing:2px;width:100%;}
+	table.pageComments tr td{border:1px solid #999;padding:5px;}
+	table.pageComments tr td.label{background-color:#ccc;}
+	table.pageComments tr td.transparent{border:0px none;}
+

@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('textarea#pageContent').wysiwyg({
+			controls: {
+				bold:{visible:true},
+				italic:{visible:true},
+				strikeThrough:{visible:true},
+				underline:{visible:false},
+				justifyLeft:{visible:true},
+				justifyCenter:{visible:true},
+				justifyRight:{visible:true},
+				justifyFull:{visible:true},
+				indent:{visible:false},
+				outdent:{visible:false},
+				subscript:{visible:true},
+				superscript:{visible:true},
+				undo:{visible:true},
+				redo:{visible:true},
+				insertOrderedList:{visible:true},
+				insertUnorderedList:{visible:true},
+				insertHorizontalRule:{visible:true},
+				createLink:{visible:true},
+				insertImage:{visible:false},
+				h1:{visible:true},
+				h2:{visible:true},
+				h3:{visible:true},
+				paragraph:{visible:true},
+				cut:{visible:true},
+				copy:{visible:true},
+				paste:{visible:true},
+				increaseFontSize:{visible:false},
+				decreaseFontSize:{visible:false},
+				html:{visible:true},
+				removeFormat:{visible:false},
+				insertTable:{visible:true}
+			}
+		});
+	});
+</script>
