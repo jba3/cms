@@ -1,8 +1,13 @@
+<!doctype html>
 <html>
 <head>
 	<title><?php echo $siteTitle ?></title>
 	<!-- jQuery library -->
-	<script type="text/javascript" src="/jscripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/jscripts/jquery-1.8.3.js"></script>
+	<!-- jQueryUI library -->
+	<link rel="stylesheet" href="/css/jquery-ui-1.9.2.custom.css">
+	<script type="text/javascript" src="/jscripts/jquery-ui-1.9.2.custom.min.js"></script>
+	<script type="text/javascript" src="/jscripts/jquery.tools.min.js"></script>
 	<!-- jQuery no-conflict -->
 	<script type="text/javascript">
 		jQuery.noConflict();
@@ -17,9 +22,6 @@
 	<!-- core css/jscripts for all sites -->
 	<script type="text/javascript" src="/jscripts/core.js"></script>
 	<link rel="stylesheet" href="/css/core.css">
-
-	<!-- jQuery slideshow -->
-	<script type="text/javascript" src="/jscripts/slides.min.jquery.js"></script>
 
 	<!-- site specific -->
 	<?php

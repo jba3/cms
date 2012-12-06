@@ -4,7 +4,7 @@
 		<td width="200" class="menu" valign="top">
 			<?php
 				if(!(isset($_COOKIE['isMobileDevice']))){
-					echo '<div class="menu-group">Me at VARF, 2012</div><img src="/img/sidebar.jpg" width="200" height="455"><br><br>';
+					echo '<div class="menu-group">Your host, Sir James</div><img src="/img/sidebar.jpg" width="200" height="455"><br><br>';
 				}
 			?>
 			<div class="menu-group">TAGS</div>
