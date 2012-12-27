@@ -1,0 +1,1 @@
+find /var/www/jba2.com/content/ -depth -exec rename 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;

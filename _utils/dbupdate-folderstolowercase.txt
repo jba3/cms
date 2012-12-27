@@ -1,0 +1,4 @@
+update cms_groups set groupFolder=LOWER(groupFolder)
+update cms_sections set sectionFolder=LOWER(sectionFolder)
+update cms_pages set pageFolder=LOWER(pageFolder)
+
