@@ -1,0 +1,20 @@
+div#photoGalleryImageContainer{text-align:center;position:relative;width:640px;height:640px;background-color:#000;}
+
+img#photoGalleryImage{z-index:2;position:absolute;top:0px;left:0px;}
+img#photoGalleryImagePreload{z-index:1;position:absolute;top:0px;left:0px;}
+
+div#photoGalleryPopup{background-color:#000;}
+div#photoGalleryPopupNav{height:32px;text-align:center;background-color:#333;position:absolute;top:0px;left:0px;width:100%;}
+div#photoGalleryImageContainer{position:absolute;top:32px;left:0px;}
+div#photoGalleryImageCaption{text-align:center;height:32px;background-color:#333;color:#fff;font-weight:bold;position:absolute;bottom:0px;left:0px;width:100%;}
+
+a.galleryThumbnail img{height:90px;}
+
+input#btnGallerySlideshowStart{}
+input#btnGallerySlideshowStop{display:none;}
+input#btnGalleryClose{position:absolute;top:0px;right:0px;}
+
+div#photoGalleryPopup{z-index:100;top:0px;left:0px;width:100%;height:100%;background-color:#fff;position:absolute;display:none;}
+
+div#photoGalleryThumbsContainer {height: 92px;margin-top: 10px;overflow: hidden;border: solid 1px black;background-color:#000;}
+div#photoGalleryThumbs{width:100px;height:92px;}
