@@ -1,7 +1,10 @@
 # application specific #
 ########################
 content/*
+custom/*
 *~
 .*~
 *.*~
+favicon.ico
+favicon.png
 
