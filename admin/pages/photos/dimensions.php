@@ -16,29 +16,29 @@
 	includeFile('/admin/pages/partials/photos.php');
 
 	$foundIssues = false;
-?>
 
-<?php
-	echo '	<ul id="sortable">';
+
+	echo '<table class="data" align="center">';
+	echo '<tr><th>File</th><th>Thumb</th><th>Large</th><th>Results</th></tr>';
 		while ($rowPhotos = mysql_fetch_assoc($qryPhotos)) {
 			list($widthThumb, $heightThumb, $type, $attr) = getimagesize($_SERVER["DOCUMENT_ROOT"] . $dirBase . '/thumb/' . $rowPhotos["imageFilename"]);
 			list($widthLarge, $heightLarge, $type, $attr) = getimagesize($_SERVER["DOCUMENT_ROOT"] . $dirBase . '/large/' . $rowPhotos["imageFilename"]);
 
+			echo '<tr>';
+				echo '<td>' . $rowPhotos["imageFilename"] . '</td>';
+				echo '<td>' . $widthThumb . ' x ' . $heightThumb . '</td>';
+				echo '<td>' . $widthLarge . ' x ' . $heightLarge . '</td>';
+				echo '</td>';
 			if ($widthThumb > 120 || $heightThumb > 120 || $widthLarge > 640 || $heightLarge > 640){
-				echo '<div style="float:left;border:1px solid #000;margin:1px;padding:0px;height:150px;width:120px;text-align:center;font-size:10px;">';
-				echo '	<img src="' . $dir . $rowPhotos["imageFilename"] . '"><br>';
-				echo '	Thumb: ' . $widthThumb . ' x ' . $heightThumb . '<br>';
-				echo '	Large: ' . $widthLarge . ' x ' . $heightLarge . '<br>';
-				echo '</div>';
+				echo '<td align="center" style="background-color:#f00;"><strong>FAIL!</strong></td>';
 				$foundIssues = true;
+			}else{
+				echo '<td>pass</td>';
 			}
+			echo '</tr>';
 		}
-	echo '	</ul>';
-?>
+	echo '	</table>';
 
-<br style="clear:both;">
-
-<?php
 	if (!($foundIssues)){
 		echo '<p align="center">No photo size issues found; everything is within spec!</p>';
 	}

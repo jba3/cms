@@ -27,11 +27,11 @@
 
 	<?php
 		while ($rowPhotos = mysql_fetch_assoc($qryPhotos)) {
-			echo '<div class="photoThumbnailContainer">';
-			echo '<div class="photoThumbnail">';
+			echo '<div class="photoThumbnailContainer" style="background-color:#333;">';
+			echo '<div class="photoThumbnail" style="background-color:#333;">';
 			echo '<input type="hidden" name="photoID[]" value="' . $rowPhotos['photoID'] . '">';
-			echo '<input type="checkbox" name="deleteList[]" value="'.$rowPhotos['photoID'].'"><br>';
 			echo '<img src="' . $dir . $rowPhotos["imageFilename"] . '"><br>';
+			echo '<input type="checkbox" name="deleteList[]" value="'.$rowPhotos['photoID'].'"><br>';
 			echo '</div>';
 			echo '</div>';
 		}

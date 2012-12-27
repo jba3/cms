@@ -14,6 +14,7 @@
 			left outer join armoryStatus ast on a.armoryStatusID=ast.armoryStatusID
 			left outer join armoryMaker am on a.armoryMakerID=am.armoryMakerID
 			where groupID=" . $_GET['groupID'] . "
+				or groupID in (select armoryGroupID from armoryHarnesses where armoryHarnesses.armoryID=a.armoryID and armoryHarnesses.armoryGroupID=" . $_GET['groupID'] . ")
 			order by a.sortOrder
 		");
 	dbClose();

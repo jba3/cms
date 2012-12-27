@@ -21,7 +21,9 @@
 		while ($rowPhotos = mysql_fetch_assoc($qryPhotos)) {
 			echo '<div class="photoThumbnailContainer">';
 			echo '<div class="photoThumbnail">';
+			echo '<div style="height:120px;width:120px;">';
 			echo '<img src="' . $dir . $rowPhotos["imageFilename"] . '"><br>';
+			echo '</div>';
 			echo '<div class="photoThumbnailCaption">' . $rowPhotos["caption"] . '</div>';
 			echo '<div class="photoThumbnailSize">' . number_format($rowPhotos["filesize"]/1024, 0) . ' kb</div>';
 			echo '</div>';

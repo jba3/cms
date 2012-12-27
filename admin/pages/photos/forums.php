@@ -36,13 +36,15 @@
 			$thisThumb = 'http://www.james-anderson-iii.com' . $dirBase . 'thumb/' . $rowPhotos["imageFilename"];
 			$thisLarge = 'http://www.james-anderson-iii.com' . $dirBase . 'large/' . $rowPhotos["imageFilename"];
 			echo '<li id="recordsArray_' . $rowPhotos['photoID'] . '">';
+			echo '	<div style="height:120px;width:120px;">';
 			echo '	<img src="' . $dir . $rowPhotos["imageFilename"] . '"><br>';
+			echo '	</div>';
 //			echo '	<input type="hidden" name="photoID[]" value="' . $rowPhotos['photoID'] . '">';
 //			echo '	<textarea name="comments[]" cols="20" rows="3">' . $rowPhotos["caption"] . '</textarea>';
 			echo '	<div class="labelsContainer">';
-			echo '	URL:<br><input class="labels" type="text" value="' . $thisLarge . '"><br>';
-			echo '	IMG:<br><input class="labels" type="text" value="[IMG]' . $thisLarge . '[/IMG]"><br>';
-			echo '	THUMB:<br><input class="labels" type="text" value="[URL=' . $thisLarge . '][IMG]' . $thisThumb . '[/IMG][/URL]"><br>';
+			echo '	URL:<br><input class="labels" type="text" value="' . $thisLarge . '" onclick="$(this).select();"><br>';
+			echo '	IMG:<br><input class="labels" type="text" value="[IMG]' . $thisLarge . '[/IMG]" onclick="$(this).select();"><br>';
+			echo '	THUMB:<br><input class="labels" type="text" value="[URL=' . $thisLarge . '][IMG]' . $thisThumb . '[/IMG][/URL]" onclick="$(this).select();"><br>';
 			echo '	</div>';
 			echo '</li>';
 		}

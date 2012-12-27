@@ -44,20 +44,14 @@
 	Functional? 0 or 1<input type="text" name="isFunctional" size="1" maxlength="1"><br>
 	Historical? 0 or 1<input type="text" name="isHistorical" size="1" maxlength="1"><br>
 	Cost<input type="text" name="cost" size="8" maxlength="8"><br>
-	Purchase Date<input type="text" name="purchaseDate" size="10" maxlength="10"><br>
+	Purchase Date (mm/dd/yyyy)
+		<input type="text" name="purchaseDateMM" size="2" maxlength="2">
+		<input type="text" name="purchaseDateDD" size="2" maxlength="2">
+		<input type="text" name="purchaseDateYYYY" size="4" maxlength="4">
+	<br>
 	Purchase Link<input type="text" name="purchaseLink" size="128" maxlength="512"><br>
-	hasPicture? 0 or 1<input type="text" name="hasPicture" size="1" maxlength="1"><br>
-	isPurchased? 0 or 1<input type="text" name="isPurchased" size="1" maxlength="1"><br>
 
 	<br>
-	<strong>WEAPONS ONLY:</strong><br>
-	<br>
-
-	lengthOverall<input type="text" name="lengthOverall" size="8" maxlength="8"><br>
-	lengthBlade<input type="text" name="lengthBlade" size="8" maxlength="8"><br>
-	widthGuard<input type="text" name="widthGuard" size="8" maxlength="8"><br>
-	widthBlade<input type="text" name="widthBlade" size="8" maxlength="8"><br>
-	thicknessBlade<input type="text" name="thicknessBlade" size="8" maxlength="8"><br>
 
 	<input type="submit">
 </form>

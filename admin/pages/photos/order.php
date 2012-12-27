@@ -45,8 +45,10 @@
 	echo '	<ul id="sortable">';
 		while ($rowPhotos = mysql_fetch_assoc($qryPhotos)) {
 			echo '<li id="recordsArray_' . $rowPhotos['photoID'] . '">';
+			echo '	<div style="width:120px;height:120px;">';
 			echo '	<img src="' . $dir . $rowPhotos["imageFilename"] . '"><br>';
-			echo '	<span style="font-size:9px;color:#fff;">'. $rowPhotos["imageFilename"] . '</span><br>';
+			echo '	</div>';
+			echo '	<span style="font-size:9px;color:#fff;">'. $rowPhotos["caption"] . '</span><br>';
 			echo '</li>';
 		}
 	echo '	</ul>';

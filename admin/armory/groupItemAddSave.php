@@ -12,17 +12,12 @@
 				isHistorical,
 				materialID,
 				cost,
-				purchaseDate,
+				purchaseDateMM,
+				purchaseDateDD,
+				purchaseDateYYYY,
 				groupID,
 				purchaseLink,
-				lengthOverall,
-				lengthBlade,
-				widthGuard,
-				thicknessBlade,
-				widthBlade,
-				hasPicture,
-				sortOrder,
-				isPurchased
+				sortOrder
 			)values(
 				$_POST[armoryStatusID],
 				$_POST[armoryMakerID],
@@ -31,17 +26,12 @@
 				$_POST[isHistorical],
 				$_POST[materialID],
 				$_POST[cost],
-				" . ((is_null($_POST[purchaseDate])) ? NULL : $_POST[purchaseDate]) . ",
+				'$_POST[purchaseDateMM]',
+				'$_POST[purchaseDateDD]',
+				'$_POST[purchaseDateYYYY]',
 				$_POST[groupID],
 				'$_POST[purchaseLink]',
-				$_POST[lengthOverall],
-				$_POST[lengthBlade],
-				$_POST[widthGuard],
-				$_POST[thicknessBlade],
-				$_POST[widthBlade],
-				$_POST[hasPicture],
-				$_POST[sortOrder],
-				$_POST[isPurchased]
+				$_POST[sortOrder]
 			)
 		");
 	dbClose();

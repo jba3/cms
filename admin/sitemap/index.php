@@ -25,10 +25,11 @@
 				g.groupID, g.groupFolder, g.groupName, g.groupSortOrder, g.groupDateCreated, g.groupDateUpdated,
 				s.sectionID, s.sectionName, s.sectionFolder, s.sectionSortOrder, s.sectionDateCreated, s.sectionDateUpdated,
 				p.pageID, p.parentPageID, p.pageFolder, p.menuText, p.pageTitle, p.pageSortOrder, p.hasMusic, p.pageHits, p.pageDateCreated, p.pageDateUpdated, p.passkey,
-				p.photoSizeValidated,
 				p.tags,
 			(select count(imageID) from cms_pageImages sub_i where sub_i.pageid=p.pageid) as countImages,
 			(select count(photoID) from cms_pagePhotos sub_p where sub_p.pageid=p.pageid) as countPhotos,
+			(select count(photoID) from cms_pagePhotos sub_pp1 where sub_pp1.pageid=p.pageid and sub_pp1.validThumb=0) as uncheckedThumb,
+			(select count(photoID) from cms_pagePhotos sub_pp2 where sub_pp2.pageid=p.pageid and sub_pp2.validLarge=0) as uncheckedLarge,
 			(select count(downloadID) from cms_pageDownloads sub_d where sub_d.pageid=p.pageid) as countDownloads,
 			(select count(commentID) from cms_pageComments sub_c where sub_c.pageid=p.pageid) as countComments
 			from cms_groups g
@@ -132,14 +133,27 @@
 						echo '	<td align="center">' . hasPasskey($row["passkey"]) . '</td>';
 						echo '	<td align="center">' . hasMusic($row["hasMusic"]) . '</td>';
 						echo '	<td align="right"><a href="/admin/pages/images.php?pageID=' . $row["pageID"] . '">' . $row["countImages"] . ' ' . dspIcon("images") . '</a></td>';
-						if ($row["countPhotos"] > 0 && $row["photoSizeValidated"] == 0){
+
+						$photoClass = "";
+						if ($row["countPhotos"] > 0 && $row["uncheckedThumb"] > 0){
 							$photoClass = "photosNeedValidation";
+							$checkThumb = true;
 						}else{
-							$photoClass = "";
+							$checkThumb = false;
 						}
-						echo '	<td align="right" class="' . $photoClass . '"><a href="/admin/pages/photos/index.php?pageID=' . $row["pageID"] . '">' . $row["countPhotos"] . ' ' . dspIcon("photos") . '</a>';
-						if ($photoClass == "photosNeedValidation"){
-							echo '<br/><a href="/admin/pages/photos/validate.php?pageID=' . $row["pageID"] . '">Validate' . dspIcon("detail") . '</a>';
+						if ($row["countPhotos"] > 0 && $row["uncheckedLarge"] > 0){
+							$photoClass = "photosNeedValidation";
+							$checkLarge = true;
+						}else{
+							$checkLarge = false;							
+						}
+
+						echo '	<td nowrap align="right" class="' . $photoClass . '"><a href="/admin/pages/photos/index.php?pageID=' . $row["pageID"] . '">' . $row["countPhotos"] . ' ' . dspIcon("photos") . '</a>';
+						if ($checkThumb){
+							echo '<br/><a href="/admin/pages/photos/fix-thumb-dimensions.php?pageID=' . $row["pageID"] . '">Check Thumbs (' . $row['uncheckedThumb'] . ')' . dspIcon("detail") . '</a>';
+						}
+						if ($checkLarge){
+							echo '<br/><a href="/admin/pages/photos/fix-large-dimensions.php?pageID=' . $row["pageID"] . '">Check Large ('  . $row['uncheckedLarge'] . ')' . dspIcon("detail") . '</a>';
 						}
 						echo '	</td>';
 						echo '	<td align="right"><a href="/admin/pages/downloads.php?pageID=' . $row["pageID"] . '">' . $row["countDownloads"] . ' ' . dspIcon("download") . '</a></td>';
@@ -181,15 +195,29 @@
 							echo '	<td align="center">' . hasPasskey($rowInner["passkey"]) . '</td>';
 							echo '	<td align="center">' . hasMusic($rowInner["hasMusic"]) . '</td>';
 							echo '	<td align="right"><a href="/admin/pages/images.php?pageID=' . $rowInner["pageID"] . '">' . $rowInner["countImages"] . ' ' . dspIcon("images") . '</a></td>';
-							if ($rowInner["countPhotos"] > 0 && $rowInner["photoSizeValidated"] == 0){
+
+							$photoClass = "";
+							if ($rowInner["countPhotos"] > 0 && $rowInner["uncheckedThumb"] > 0){
 								$photoClass = "photosNeedValidation";
+								$checkThumb = true;
 							}else{
-								$photoClass = "";
+								$checkThumb = false;
 							}
-							echo '	<td align="right" class="' . $photoClass . '"><a href="/admin/pages/photos/index.php?pageID=' . $rowInner["pageID"] . '">' . $rowInner["countPhotos"] . ' ' . dspIcon("photos") . '</a>';
-							if ($photoClass == "photosNeedValidation"){
-								echo '<br/><a href="/admin/pages/photos/validate.php?pageID=' . $rowInner["pageID"] . '">Validate' . dspIcon("detail") . '</a>';
+							if ($rowInner["countPhotos"] > 0 && $rowInner["uncheckedLarge"] > 0){
+								$photoClass = "photosNeedValidation";
+								$checkLarge = true;
+							}else{
+								$checkLarge = false;							
 							}
+
+							echo '	<td nowrap align="right" class="' . $photoClass . '"><a href="/admin/pages/photos/index.php?pageID=' . $rowInner["pageID"] . '">' . $rowInner["countPhotos"] . ' ' . dspIcon("photos") . '</a>';
+							if ($checkThumb){
+								echo '<br/><a href="/admin/pages/photos/fix-thumb-dimensions.php?pageID=' . $rowInner["pageID"] . '">Check Thumbs (' . $rowInner['uncheckedThumb'] . ')' . dspIcon("detail") . '</a>';
+							}
+							if ($checkLarge){
+								echo '<br/><a href="/admin/pages/photos/fix-large-dimensions.php?pageID=' . $rowInner["pageID"] . '">Check Large ('  . $rowInner['uncheckedLarge'] . ')' . dspIcon("detail") . '</a>';
+							}
+
 							echo '	</td>';
 							echo '	<td align="right"><a href="/admin/pages/downloads.php?pageID=' . $rowInner["pageID"] . '">' . $rowInner["countDownloads"] . ' ' . dspIcon("download") . '</a></td>';
 							echo '	<td align="right"><a href="/admin/pages/comments.php?pageID=' . $rowInner["pageID"] . '">' . $rowInner["countComments"] . ' ' . dspIcon("comments") . '</a></td>';
@@ -212,8 +240,8 @@
 		echo '</div>';
 		echo '</div>';
 	dbClose();
-?>
 
-<?php
+
+
 	require $_SERVER["DOCUMENT_ROOT"] . "/admin/includes/footer.inc.php";
 ?>
