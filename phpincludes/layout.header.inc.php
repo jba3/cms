@@ -27,29 +27,17 @@
 	<script type="text/javascript" src="/jscripts//jquery.fancybox-1.3.4.js"></script>
 	<link rel="stylesheet" type="text/css" href="/css/jquery.fancybox-1.3.4.css" media="screen" /></head>
 
-	<script type="text/javascript">
-		$(function(){
-			$("a.armoryThumbs").fancybox();
-
-			$("a.menu-group").tooltip({
-				position: {
-					my: "left top-1",
-					at: "right+1 top"
-				}
-			});
-		});
-	</script>
 	<style>
-		.ui-tooltip {
-			background: #eee;
-			border: 1px solid #000;
-			padding: 4px;
-			color: #000;
-			border-radius: 5px;
-			font: bold 12px Arial;
-			box-shadow: 3px 3px 7px black;
-		}
-    </style>
+		/* Demo styles */
+		.content{color:#777;font:12px/1.4 "helvetica neue",arial,sans-serif;width:620px;margin:20px auto;}
+		.cred{margin-top:20px;font-size:11px;}
+
+		/* This rule is read by Galleria to define the gallery height: */
+		#galleria{height:320px}
+	</style>
+
+	<!-- load Galleria -->
+	<script src="/jscripts/galleria-1.2.9.min.js"></script>
 
 	<!-- site specific -->
 	<?php

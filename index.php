@@ -87,6 +87,7 @@
 		include('phpincludes/addPageHit.php');
 
 		echo '<h1>' . $qryPage["pageTitle"] . '</h1>';
+		echo '<br>';
 
 		include('phpincludes/music.php');
 		include($qryPagePath . '/content.php');
@@ -98,5 +99,5 @@
 
 	require "phpincludes/layout.footer.inc.php";
 
-	include('phpincludes/debug.php');
+//	include('phpincludes/debug.php');
 ?>

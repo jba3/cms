@@ -226,8 +226,16 @@
 			}
 		}
 
+		// KILL all the EXIF data. it comes on android phones, has privacy stuff, and causes errors too
+//		$img = new Imagick($orig);
+//		$img->stripImage();
+//		$img->writeImage($orig);
+//		$img->clear();
+//		$img->destroy();
+
 		// OPEN IMAGES IN MEMORY
-		$source = imagecreatefromjpeg($orig);
+//		$source = imagecreatefromjpeg($orig);
+		$source = imagecreatefromstring($orig);
 		$thumb = imagecreatetruecolor($new_width,$new_height);
 
 		// RESIZE
